@@ -3,7 +3,7 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 .mvn
 mvn*
-
+log/
 ### STS ###
 .apt_generated
 .classpath

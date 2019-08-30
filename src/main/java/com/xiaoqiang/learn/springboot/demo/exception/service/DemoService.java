@@ -1,4 +1,4 @@
-package com.xiaoqiang.learn.springboot.demo.service;
+package com.xiaoqiang.learn.springboot.demo.exception.service;
 
 /**
  * @author xiaoqiang

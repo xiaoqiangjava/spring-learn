@@ -1,4 +1,4 @@
-package com.xiaoqiang.learn.springboot.demo.controller;
+package com.xiaoqiang.learn.springboot.demo.exception.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

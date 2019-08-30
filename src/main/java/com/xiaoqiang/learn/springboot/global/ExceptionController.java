@@ -1,5 +1,7 @@
 package com.xiaoqiang.learn.springboot.global;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,32 +16,22 @@ import java.util.Map;
  * 请求通过DispatcherServlet分发，到了doDispatcher()方法阶段，只有异常存在时，才会触发ExceptionHandler，前提是
  * 已经配置了ExceptionHandler处理器。
  * 404请求，不会抛出异常，当URL不存在时，还会HttpRequestHandlerAdapter去加载静态资源，所以不会被ExceptionHandler捕获
+ * 该类中不要捕获Exception类型的异常，Exception类型的异常有全局异常处理类FrameworkController来统一处理
  * @author xiaoqiang
  * @date 2019/8/13 23:55
  */
 @RestControllerAdvice
 public class ExceptionController
 {
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, Object> handlerRuntimeException(RuntimeException e)
     {
-        e.printStackTrace();
+        logger.error(e.getMessage(), e);
         Map<String, Object> response = new HashMap<>();
         response.put("is_success", "false");
         response.put("error_msg", e.getMessage());
-        throw new RuntimeException("");
-//        return response;
-    }
-
-//    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, Object> handlerException(Exception e)
-    {
-        e.printStackTrace();
-        Map<String, Object> response = new HashMap<>();
-        response.put("is_success", false);
-        response.put("error_msg", "Internal error.");
         return response;
     }
 }
