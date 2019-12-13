@@ -4,10 +4,11 @@ import com.xq.learn.dao.movie.MovieMapper;
 import com.xq.learn.model.movie.Movie;
 import com.xq.learn.service.movie.MovieService;
 import java.util.List;
+import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 电影业务层实现类，相关业务逻辑都在该类中实现
@@ -19,11 +20,12 @@ public class MovieServiceImpl implements MovieService
 {
     private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
 
-    @Autowired
+    @Resource
     private MovieMapper movieMapper;
 
     @Override
-    public List<Movie> list()
+    @Transactional
+    public List<Movie> list(String name)
     {
         logger.info("List movies.");
         movieMapper.list();

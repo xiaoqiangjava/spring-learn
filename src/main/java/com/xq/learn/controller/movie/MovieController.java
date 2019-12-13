@@ -32,7 +32,7 @@ public class MovieController
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Movie> list()
     {
-        List<Movie> movies = movieService.list();
+        List<Movie> movies = movieService.list("name");
         MovieMapper movieMapper = SpringBeanUtil.getBean("movieMapper");
         logger.info("Succeed to list movies.");
         return movies;

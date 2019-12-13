@@ -14,5 +14,5 @@ public interface MovieService
      * 查询电影列表信息
      * @return movies 电影列表信息
      */
-    List<Movie> list();
+    List<Movie> list(String name);
 }
