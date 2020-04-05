@@ -7,4 +7,5 @@ package com.xq.learn.controller.user;
  */
 public class UserController
 {
+
 }

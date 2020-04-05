@@ -1,5 +1,10 @@
 package com.xq.learn.model.movie;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.xq.learn.model.view.View;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,12 +13,16 @@ import java.util.List;
  * @author xiaoqiang
  * @date 2019/11/6 23:07
  */
+@JsonView(View.Movie.class)
+@ApiModel
 public class Movie implements Serializable
 {
+    @ApiModelProperty(value = "电影id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private int mid;
 
     private String name;
 
+    @JsonProperty("time_long")
     private String timeLong;
 
     private String issue;
