@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @ComponentScan("com.xq.learn")
-@MapperScan(value = {"com.xq.learn.dao.movie"})
+@MapperScan(value = {"com.xq.learn.dao"})
 @EnableSwagger2
 public class Application
 {
