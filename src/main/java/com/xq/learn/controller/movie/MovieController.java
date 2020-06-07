@@ -2,6 +2,7 @@ package com.xq.learn.controller.movie;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.xq.learn.dao.movie.MovieMapper;
+import com.xq.learn.message.MessageHelper;
 import com.xq.learn.model.movie.Movie;
 import com.xq.learn.model.response.CommonResponse;
 import com.xq.learn.model.view.View;
@@ -36,9 +37,14 @@ public class MovieController
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private MessageHelper messageHelper;
+
     @RequestMapping
     public String suffixMatch()
     {
+        String message = messageHelper.getMessage("gasc.1001");
+        logger.info("message: {}", message);
         logger.info("coming in");
         return "success";
     }
@@ -65,6 +71,7 @@ public class MovieController
     @RequestMapping(value = "movies", method = RequestMethod.POST)
     public CommonResponse save(@RequestBody Movie movie)
     {
+        messageHelper.valid(movie);
         CommonResponse response = new CommonResponse();
         response.setIsSuccess(true);
         response.setMessage("Succeed to save movie.");

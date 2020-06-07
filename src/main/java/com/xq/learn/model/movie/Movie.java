@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  * movie实体类
@@ -20,6 +21,7 @@ public class Movie implements Serializable
     @ApiModelProperty(value = "电影id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private int mid;
 
+    @NotNull(message = "gasc.1001")
     private String name;
 
     @JsonProperty("time_long")
